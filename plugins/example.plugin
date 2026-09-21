@@ -1,0 +1,21 @@
+#!name = Loon 示例插件
+#!desc = 插件模板示例：演示 [Argument]、[Script]、[Rewrite] 基本写法，安装后网络切换时推送出口 IP 与归属地通知，可复制修改成自己的插件。
+#!author = leafshow
+#!homepage = https://github.com/leafshow/loon-scripts
+#!icon = https://raw.githubusercontent.com/Loon0x00/LoonExampleConfig/master/ICON/ICON.png
+#!date = 2026-09-21
+#!openUrl = https://github.com/leafshow/loon-scripts
+
+[Argument]
+推送通知 = ARG_SWITCH, default=true, label=网络切换时推送出口信息
+
+[Script]
+network-changed check-network = type=network-changed, script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/scripts/check-network.js, timeout=10, tag=网络出口检测
+
+[Rewrite]
+# 按需添加重写规则，示例：
+# ^https?:\/\/example\.com\/old-api url 302 https://example.com/new-api
+
+[MITM]
+# 需要解密 HTTPS 时填写对应域名，示例：
+# hostname = example.com
