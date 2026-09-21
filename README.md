@@ -17,6 +17,11 @@ loon-scripts/
 │   ├── vip_signin.js
 │   ├── vip.plugin
 │   └── README.md
+├── ZDM/                   # 什么值得买自动签到（脚本 + 插件 + 使用说明）
+│   ├── smzdm_cookie_capture.js
+│   ├── smzdm_signin.js
+│   ├── smzdm.plugin
+│   └── README.md
 ├── scripts/               # JavaScript 脚本
 │   └── check-network.js   # 网络出口信息检测
 ├── plugins/               # Loon 插件文件
@@ -63,6 +68,7 @@ network-changed script-path=https://raw.githubusercontent.com/leafshow/loon-scri
 | [check-network.js](scripts/check-network.js) | network-changed | 网络切换时自动推送当前出口 IP 与归属地通知 |
 | [华住会签到](HZH/README.md) | http-request + cron | 每日自动签到华住会，推送积分/奖品结果，附插件与使用文档 |
 | [唯品会签到](VIP/README.md) | http-request + cron | 每日自动签到唯品会，推送 VIP 币/补贴结果，附插件与使用文档 |
+| [什么值得买签到](ZDM/README.md) | http-request + cron | 每日自动签到什么值得买（App 接口），附插件与使用文档 |
 
 ## Loon 脚本常用 API 速查
 
