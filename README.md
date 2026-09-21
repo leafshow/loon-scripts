@@ -7,6 +7,11 @@
 ```
 loon-scripts/
 ├── README.md              # 说明文档
+├── HZH/                   # 华住会自动签到（脚本 + 插件 + 使用说明）
+│   ├── huazhu_cookie_capture.js
+│   ├── huazhu_signin.js
+│   ├── huazhu.plugin
+│   └── README.md
 ├── scripts/               # JavaScript 脚本
 │   └── check-network.js   # 网络出口信息检测
 ├── plugins/               # Loon 插件文件
@@ -51,6 +56,7 @@ network-changed script-path=https://raw.githubusercontent.com/leafshow/loon-scri
 | 脚本 | 类型 | 说明 |
 | --- | --- | --- |
 | [check-network.js](scripts/check-network.js) | network-changed | 网络切换时自动推送当前出口 IP 与归属地通知 |
+| [华住会签到](HZH/README.md) | http-request + cron | 每日自动签到华住会，推送积分/奖品结果，附插件与使用文档 |
 
 ## Loon 脚本常用 API 速查
 

@@ -1,0 +1,18 @@
+#!name = 华住会自动签到
+#!desc = 每日自动签到华住会：打开华住会 App 签到页自动捕获 Cookie，每日 00:05 定时签到并推送积分/奖品结果。使用前需在 Loon 安装并信任 CA 证书、开启 MITM。
+#!author = leafshow
+#!homepage = https://github.com/leafshow/loon-scripts
+#!icon = https://raw.githubusercontent.com/evilbutcher/QuantumultX/main/picture/hzh.png
+#!date = 2026-09-21
+#!openUrl = https://github.com/leafshow/loon-scripts/tree/main/HZH
+
+[Argument]
+自动签到 = ARG_SWITCH, default=true, label=每日 00:05 定时签到
+Cookie捕获 = ARG_SWITCH, default=true, label=打开App签到页自动捕获Cookie
+
+[Script]
+http-request ^https?:\/\/appgw\.huazhu\.com\/game\/sign_header script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/HZH/huazhu_cookie_capture.js, requires-body=false, tag=华住Cookie捕获, enable={{Cookie捕获}}
+cron "5 0 * * *" script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/HZH/huazhu_signin.js, tag=华住会签到, enable={{自动签到}}
+
+[MITM]
+hostname = appgw.huazhu.com
