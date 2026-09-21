@@ -1,0 +1,18 @@
+#!name = 唯品会自动签到
+#!desc = 每日自动签到唯品会：打开唯品会 App 触发签到页请求自动捕获凭证，每日 08:10 定时签到并推送 VIP 币/补贴结果。使用前需在 Loon 安装并信任 CA 证书、开启 MITM。
+#!author = leafshow
+#!homepage = https://github.com/leafshow/loon-scripts
+#!icon = https://raw.githubusercontent.com/Orz-3/mini/master/Color/vip.png
+#!date = 2026-09-21
+#!openUrl = https://github.com/leafshow/loon-scripts/tree/main/VIP
+
+[Argument]
+自动签到 = ARG_SWITCH, default=true, label=每日 08:10 定时签到
+凭证捕获 = ARG_SWITCH, default=true, label=打开App自动捕获签到凭证
+
+[Script]
+http-request ^https?:\/\/act-ug\.vip\.com\/signIn script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/VIP/vip_cookie_capture.js, requires-body=true, tag=唯品会凭证捕获, enable={{凭证捕获}}
+cron "10 8 * * *" script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/VIP/vip_signin.js, tag=唯品会签到, enable={{自动签到}}
+
+[MITM]
+hostname = act-ug.vip.com
