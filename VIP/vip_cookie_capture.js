@@ -47,9 +47,9 @@ function main() {
   console.log("[VIP-Capture] tfs_fp_token: " + (tfs_fp_token ? "已获取" : "未获取"));
 
   // 4. 校验必要参数
-  if (!rawCookie) {
-    console.log("[VIP-Capture] Cookie 为空，跳过");
-    $notification.post("⚠️ 唯品会", "Cookie 为空", "请确认已登录并触发签到请求");
+  if (!rawCookie || rawCookie.length === 0) {  // ✅ 改成 rawCookie
+    console.log("[VIP-Capture] Cookie 为空，跳过（预检请求）");
+    // 不弹窗，直接静默退出
     $done({});
     return;
   }
