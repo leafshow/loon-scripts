@@ -1,0 +1,18 @@
+#!name = 电梯开门码参数提取
+#!desc = 捕获电梯开门码（JSLIFE 门禁）接口参数并持久化：在微信/App 内点击「开门码」时自动提取 URL 中的 token/bizSource/h5Source 与响应中的 userId，拼接 doorkey JSON 存储，并可随时读取复制。使用前需在 Loon 安装并信任 CA 证书、开启 MITM。
+#!author = leafshow
+#!homepage = https://github.com/leafshow/loon-scripts
+#!icon = https://raw.githubusercontent.com/Orz-3/mini/master/Color/elevator.png
+#!date = 2026-09-22
+#!openUrl = https://github.com/leafshow/loon-scripts/tree/main/ELEV
+
+[Argument]
+开门码捕获 = ARG_SWITCH, default=true, label=点击开门码时自动捕获参数
+读取电梯码 = ARG_SWITCH, default=false, label=读取 doorkey 数据（手动运行）
+
+[Script]
+http-response ^https?:\/\/wx\.jslife\.com\.cn\/ script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/ELEV/elevator_capture.js, requires-body=true, tag=电梯码参数捕获, enable={{开门码捕获}}
+cron "10 0 1 * *" script-path=https://raw.githubusercontent.com/leafshow/loon-scripts/main/ELEV/elevator_read.js, tag=读取电梯码数据, enable={{读取电梯码}}
+
+[MITM]
+hostname = wx.jslife.com.cn

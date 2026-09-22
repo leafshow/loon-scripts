@@ -27,6 +27,11 @@ loon-scripts/
 │   ├── homeinns_checkin.js
 │   ├── homeinns.plugin
 │   └── README.md
+├── ELEV/                  # 电梯开门码参数提取（脚本 + 插件 + 使用说明）
+│   ├── elevator_capture.js
+│   ├── elevator_read.js
+│   ├── elevator.plugin
+│   └── README.md
 ├── scripts/               # JavaScript 脚本
 │   └── check-network.js   # 网络出口信息检测
 ├── plugins/               # Loon 插件文件
@@ -75,6 +80,7 @@ network-changed script-path=https://raw.githubusercontent.com/leafshow/loon-scri
 | [唯品会签到](VIP/README.md) | http-request + cron | 每日自动签到唯品会，推送 VIP 币/补贴结果，附插件与使用文档 |
 | [什么值得买签到](ZDM/README.md) | http-request + cron | 每日自动签到什么值得买（App 接口），附插件与使用文档 |
 | [首旅如家签到](RJ/README.md) | http-request + cron | 每日自动签到首旅如家，推送如愿豆奖励，含 Cookie 自动续期，附插件与使用文档 |
+| [电梯开门码提取](ELEV/README.md) | http-response | 捕获 JSLIFE 电梯开门码参数并持久化 doorkey JSON，支持随时读取复制，附插件与使用文档 |
 
 ## Loon 脚本常用 API 速查
 
