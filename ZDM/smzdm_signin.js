@@ -64,7 +64,13 @@ $httpClient.post(options, (error, response, data) => {
         } else {
             const msg = result.error_msg || result.message || "签到失败";
             console.log(`[SMZDM-Signin] 失败原因: ${msg}`);
-            $notification.post("什么值得买签到失败", msg, "");
+            // 签名时效过期（捕获的 body 含 time+sign 防重放签名，仅捕获后短时间有效）：
+            // 不再弹失败通知，改为提醒打开 App 点一次签到刷新签名并完成当日签到
+            if (/sign|time\s*out/i.test(msg)) {
+                $notification.post("⚠️ 什么值得买签名已过期", "打开App点一次签到即可刷新", "进入签到页点击签到：捕获脚本会自动更新签名并完成当日签到");
+            } else {
+                $notification.post("什么值得买签到失败", msg, "");
+            }
         }
     } catch (e) {
         console.log(`[SMZDM-Signin] 解析失败: ${e}`);
