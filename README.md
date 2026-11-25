@@ -34,11 +34,47 @@ loon-scripts/
 │   └── README.md
 ├── scripts/               # JavaScript 脚本
 │   └── check-network.js   # 网络出口信息检测
+├── rules/                 # 规则订阅（配置片段）
+│   └── loon-rules.conf    # 常用域名分流规则
 ├── plugins/               # Loon 插件文件
 │   └── example.plugin     # 插件模板示例
 ├── LICENSE
 └── .gitignore
 ```
+
+## 规则订阅
+
+在 Loon「配置 → 远程配置 → 订阅」中新建订阅，粘贴以下链接即可加载 `rules/loon-rules.conf` 中的分流规则：
+
+```
+https://raw.githubusercontent.com/leafshow/loon-scripts/main/rules/loon-rules.conf
+```
+
+CDN 加速（raw 链接无法直连时）：
+
+```
+https://cdn.jsdelivr.net/gh/leafshow/loon-scripts@main/rules/loon-rules.conf
+```
+
+规则内容（自上而下匹配，顺序即优先级）：
+
+| 规则 | 策略 |
+| --- | --- |
+| `DOMAIN-SUFFIX,paleria.in` | `DIRECT` |
+| `DOMAIN-SUFFIX,okx.com.*` | `美国自动策略` |
+| `DOMAIN-SUFFIX,okx.com` | `美国自动策略` |
+| `DOMAIN,api.today.ai` | `美国自动策略` |
+| `DOMAIN,api.199189.xyz` | `DIRECT` |
+| `DOMAIN,api.day.app` | `DIRECT` |
+| `DOMAIN-SUFFIX,huangguoai.com` | `DIRECT` |
+| `DOMAIN,aedns.weixin.qq.com` | `DIRECT` |
+| `DOMAIN,dns.weixin.qq.com.cn` | `DIRECT` |
+| `DOMAIN,dns.weixin.qq.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,weather.apple.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,weather-data.apple.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,icloud.com` | `DIRECT` |
+
+> 注：订阅片段只含 `[Rule]` 段落，可合并进完整配置，也可作为纯规则订阅加载。
 
 ## 手机端加载方式
 
