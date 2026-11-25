@@ -56,7 +56,9 @@ CDN 加速（raw 链接无法直连时）：
 https://cdn.jsdelivr.net/gh/leafshow/loon-scripts@main/rules/loon-rules.conf
 ```
 
-规则内容（自上而下匹配，顺序即优先级）：
+规则内容（自上而下匹配，顺序即优先级），分为「手机端规则」与「Mac端规则」两组：
+
+**手机端规则**
 
 | 规则 | 策略 |
 | --- | --- |
@@ -70,9 +72,25 @@ https://cdn.jsdelivr.net/gh/leafshow/loon-scripts@main/rules/loon-rules.conf
 | `DOMAIN,aedns.weixin.qq.com` | `DIRECT` |
 | `DOMAIN,dns.weixin.qq.com.cn` | `DIRECT` |
 | `DOMAIN,dns.weixin.qq.com` | `DIRECT` |
-| `DOMAIN-SUFFIX,weather.apple.com` | `DIRECT` |
-| `DOMAIN-SUFFIX,weather-data.apple.com` | `DIRECT` |
+
+**Mac端规则**
+
+| 规则 | 策略 |
+| --- | --- |
 | `DOMAIN-SUFFIX,icloud.com` | `DIRECT` |
+| `DOMAIN,vpndl02.eascs.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,appstorrent.ru` | `DIRECT` |
+| `DOMAIN-SUFFIX,apple.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,macked.app` | `DIRECT` |
+| `DOMAIN-SUFFIX,bjyjys.work` | `DIRECT` |
+| `DOMAIN-SUFFIX,rdvcc.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,day.app` | `DIRECT` |
+| `DOMAIN-SUFFIX,z.ai` | `DIRECT` |
+| `DOMAIN-SUFFIX,jd.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,microsoft.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,jzt.jd.com` | `DIRECT` |
+| `DOMAIN-SUFFIX,mongodb.net` | `DIRECT` |
+| `DOMAIN,psv4.userapi.com` | `DIRECT` |
 
 > 注：订阅片段只含 `[Rule]` 段落，可合并进完整配置，也可作为纯规则订阅加载。
 
